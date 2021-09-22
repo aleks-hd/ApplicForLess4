@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/randome_image"
+        android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Random" />
+    <item
+        android:id="@+id/favorite_image"
+        android:icon="@android:drawable/star_big_on"
+        android:title="Favorite" />
+    <item
+        android:id="@+id/setting_app"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Settings" />
+</menu>
