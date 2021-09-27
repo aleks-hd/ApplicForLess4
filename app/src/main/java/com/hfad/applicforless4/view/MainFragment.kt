@@ -2,10 +2,10 @@ package com.hfad.applicforless4.view
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.hfad.applicforless4.R
 import com.hfad.applicforless4.databinding.FragmentMainBinding
 import com.hfad.applicforless4.view.viewNavigation.ImageFragment
@@ -13,7 +13,6 @@ import com.hfad.applicforless4.view.viewNavigation.LikeFragment
 import com.hfad.applicforless4.view.viewNavigation.SettingsFragment
 import com.hfad.applicforless4.view.viewmodel.AppState
 import com.hfad.applicforless4.view.viewmodel.MainViewModel
-import java.util.*
 
 
 class MainFragment : Fragment() {
@@ -31,7 +30,8 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getLiveData().observe(viewLifecycleOwner, androidx.lifecycle.Observer { render(it) })
+        viewModel.getLiveData()
+            .observe(viewLifecycleOwner, androidx.lifecycle.Observer { render(it) })
         viewModel.getFilmFromServer()
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -60,22 +60,21 @@ class MainFragment : Fragment() {
             }
         }
         binding.bottomNavigationView.selectedItemId = R.id.setting_app
-
     }
 
     private fun render(it: AppState?) {
-
-      when (it) {
+        when (it) {
             is AppState.Success -> {
                 val listFilms = it.listFilm.results
                 val sd = listFilms[0].title
                 Log.i("ERERERRERE", sd.toString())
             }
-    }}
+        }
+    }
 
-    fun initFragment(nameFragment :String){
+    fun initFragment(nameFragment: String) {
 
-   }
+    }
 
     companion object {
         @JvmStatic
