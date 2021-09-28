@@ -1,23 +1,25 @@
 package com.hfad.applicforless4.view.viewNavigation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hfad.applicforless4.R
+import androidx.fragment.app.Fragment
+import coil.api.load
+import com.hfad.applicforless4.databinding.FragmentLikeBinding
+import com.hfad.applicforless4.view.model.ResultFilms
 
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class LikeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class LikeFragment(film: ResultFilms = ResultFilms(0, "", "", "", false)) : Fragment() {
+    private var _binding: FragmentLikeBinding? = null
+    private val binding get() = _binding!!
     private var param1: String? = null
     private var param2: String? = null
-
+    private var films = film
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -30,20 +32,24 @@ class LikeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_like, container, false)
+        _binding = FragmentLikeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        init()
+    }
+
+    private fun init() {
+        binding.titleFilmLike.text = films.title
+        binding.descriptionFilmLike.text = films.overview
+        var url = films.poster_path
+        binding.mainBackdrop.load("https://image.tmdb.org/t/p/w200${url}")
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LikeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             LikeFragment().apply {

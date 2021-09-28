@@ -1,11 +1,21 @@
 package com.hfad.applicforless4.view.viewNavigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hfad.applicforless4.R
+import com.hfad.applicforless4.databinding.FragmentImageBinding
+import com.hfad.applicforless4.databinding.FragmentMainBinding
+import com.hfad.applicforless4.view.adapter.MainAdapter
+import com.hfad.applicforless4.view.model.ResultFilms
+import com.hfad.applicforless4.view.viewmodel.AppState
+import com.hfad.applicforless4.view.viewmodel.MainViewModel
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -14,10 +24,13 @@ private const val ARG_PARAM2 = "param2"
 
 
 class ImageFragment : Fragment() {
-
+    var listFilm: List<ResultFilms> = listOf()
+    private val adapter = MainAdapter()
     private var param1: String? = null
     private var param2: String? = null
-
+    private var _binding: FragmentImageBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel = MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -30,9 +43,43 @@ class ImageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image, container, false)
+        _binding = FragmentImageBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { render(it) })
+        viewModel.getFilmFromServer()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        adapter.setOnClickListenerCustome(object : MainAdapter.OnItemClick{
+            override fun fordardClick(film: ResultFilms) {
+                Log.i("AAAAAA", "${film.title}")
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.addToBackStack(null)
+                        ?.replace(R.id.fragment_new_container, LikeFragment(film))
+                        ?.commit()
+            }
+
+        })
+    }
+
+    private fun render(it: AppState?) {
+        when (it) {
+            is AppState.Success -> {
+                listFilm = it.listFilm.results
+                setData(listFilm)
+            }
+
+        }
+    }
+
+    private fun setData(listFilm: List<ResultFilms>) {
+        adapter.setFilms(listFilm)
+    }
+
 
     companion object {
 
