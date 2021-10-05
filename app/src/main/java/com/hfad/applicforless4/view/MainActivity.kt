@@ -6,6 +6,7 @@ import com.hfad.applicforless4.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_ApplicForLess4)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initFragment()

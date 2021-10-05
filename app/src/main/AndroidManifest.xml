@@ -11,6 +11,7 @@
         android:theme="@style/Theme.ApplicForLess4">
         <activity
             android:name=".view.MainActivity"
+            android:theme="@style/AppTheme.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
