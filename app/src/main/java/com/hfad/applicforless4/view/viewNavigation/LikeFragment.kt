@@ -1,6 +1,12 @@
 package com.hfad.applicforless4.view.viewNavigation
 
+import android.app.Activity
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,13 +42,24 @@ class LikeFragment(film: ResultFilms = ResultFilms(0, "", "", "", false)) : Frag
         return binding.root
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+       activity?.let{
+           binding.descriptionFilmLike.typeface = Typeface.createFromAsset(it.assets, "Xenosphere-RM66.ttf")
+       }
+
         init()
     }
 
     private fun init() {
-        binding.titleFilmLike.text = films.title
+        val splane = SpannableString(films.title)
+        splane.setSpan(
+            ForegroundColorSpan(Color.RED),
+            0,5,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.titleFilmLike.text =splane
         binding.descriptionFilmLike.text = films.overview
         var url = films.poster_path
         binding.mainBackdrop.load("https://image.tmdb.org/t/p/w200${url}")

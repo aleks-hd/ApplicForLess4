@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/drawable-v24/outline_arrow_drop_up_24.xml" value="0.18981481481481483" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/drawable-v24/outline_clear_24.xml" value="0.25833333333333336" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/drawable/outline_arrow_drop_down_24.xml" value="0.18981481481481483" />
         <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/fragment_image.xml" value="0.203125" />
         <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/fragment_like.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/fragment_main.xml" value="0.1" />
-        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
-        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/item.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/item.xml" value="0.22" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/item_not_abult.xml" value="0.1707193515704154" />
+        <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/layout/position.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/ApplicForLess4/app/src/main/res/menu/main_menu.xml" value="0.1" />
       </map>
     </option>

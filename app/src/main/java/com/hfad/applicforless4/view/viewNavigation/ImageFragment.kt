@@ -71,6 +71,12 @@ class ImageFragment : Fragment() {
             is AppState.Success -> {
                 listFilm = it.listFilm.results
                 setData(listFilm)
+              var size = listFilm.size -1
+             for (i in 0..size){
+                    var abultTest = listFilm.get(i).adult
+                 var sad = listFilm.get(i).title
+                    Log.i("ABULT", "$abultTest + $sad")
+                }
             }
 
         }

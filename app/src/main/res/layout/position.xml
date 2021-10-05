@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="end"
+    android:layout_height="match_parent">
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:id="@+id/image_up"
+            android:layout_gravity="end"
+            android:layout_height="40dp"
+            android:src="@drawable/outline_arrow_drop_up_24"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:id="@+id/image_clear"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:src="@drawable/outline_clear_24"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:id="@+id/image_down"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:src="@drawable/outline_arrow_drop_down_24"/>
+
+
+
+
+
+</LinearLayout>
